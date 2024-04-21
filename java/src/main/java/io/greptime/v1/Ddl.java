@@ -13960,42 +13960,21 @@ java.lang.String defaultValue);
         getColumnNameBytes();
 
     /**
-     * <code>.greptime.v1.ColumnDataType target_type = 2;</code>
-     * @return The enum numeric value on the wire for targetType.
+     * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
+     * @return Whether the modifyType field is set.
      */
-    int getTargetTypeValue();
+    boolean hasModifyType();
     /**
-     * <code>.greptime.v1.ColumnDataType target_type = 2;</code>
-     * @return The targetType.
+     * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
+     * @return The modifyType.
      */
-    io.greptime.v1.Common.ColumnDataType getTargetType();
+    io.greptime.v1.Ddl.ModifyColumnType getModifyType();
+    /**
+     * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
+     */
+    io.greptime.v1.Ddl.ModifyColumnTypeOrBuilder getModifyTypeOrBuilder();
 
-    /**
-     * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 3;</code>
-     * @return Whether the targetTypeExtension field is set.
-     */
-    boolean hasTargetTypeExtension();
-    /**
-     * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 3;</code>
-     * @return The targetTypeExtension.
-     */
-    io.greptime.v1.Common.ColumnDataTypeExtension getTargetTypeExtension();
-    /**
-     * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 3;</code>
-     */
-    io.greptime.v1.Common.ColumnDataTypeExtensionOrBuilder getTargetTypeExtensionOrBuilder();
-
-    /**
-     * <code>string target_name = 4;</code>
-     * @return The targetName.
-     */
-    java.lang.String getTargetName();
-    /**
-     * <code>string target_name = 4;</code>
-     * @return The bytes for targetName.
-     */
-    com.google.protobuf.ByteString
-        getTargetNameBytes();
+    public io.greptime.v1.Ddl.ModifyColumn.BodyCase getBodyCase();
   }
   /**
    * Protobuf type {@code greptime.v1.ModifyColumn}
@@ -14011,8 +13990,6 @@ java.lang.String defaultValue);
     }
     private ModifyColumn() {
       columnName_ = "";
-      targetType_ = 0;
-      targetName_ = "";
     }
 
     @java.lang.Override
@@ -14051,29 +14028,18 @@ java.lang.String defaultValue);
               columnName_ = s;
               break;
             }
-            case 16: {
-              int rawValue = input.readEnum();
-
-              targetType_ = rawValue;
-              break;
-            }
-            case 26: {
-              io.greptime.v1.Common.ColumnDataTypeExtension.Builder subBuilder = null;
-              if (targetTypeExtension_ != null) {
-                subBuilder = targetTypeExtension_.toBuilder();
+            case 18: {
+              io.greptime.v1.Ddl.ModifyColumnType.Builder subBuilder = null;
+              if (bodyCase_ == 2) {
+                subBuilder = ((io.greptime.v1.Ddl.ModifyColumnType) body_).toBuilder();
               }
-              targetTypeExtension_ = input.readMessage(io.greptime.v1.Common.ColumnDataTypeExtension.parser(), extensionRegistry);
+              body_ =
+                  input.readMessage(io.greptime.v1.Ddl.ModifyColumnType.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(targetTypeExtension_);
-                targetTypeExtension_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom((io.greptime.v1.Ddl.ModifyColumnType) body_);
+                body_ = subBuilder.buildPartial();
               }
-
-              break;
-            }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              targetName_ = s;
+              bodyCase_ = 2;
               break;
             }
             default: {
@@ -14108,6 +14074,45 @@ java.lang.String defaultValue);
       return io.greptime.v1.Ddl.internal_static_greptime_v1_ModifyColumn_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               io.greptime.v1.Ddl.ModifyColumn.class, io.greptime.v1.Ddl.ModifyColumn.Builder.class);
+    }
+
+    private int bodyCase_ = 0;
+    private java.lang.Object body_;
+    public enum BodyCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      MODIFY_TYPE(2),
+      BODY_NOT_SET(0);
+      private final int value;
+      private BodyCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static BodyCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static BodyCase forNumber(int value) {
+        switch (value) {
+          case 2: return MODIFY_TYPE;
+          case 0: return BODY_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public BodyCase
+    getBodyCase() {
+      return BodyCase.forNumber(
+          bodyCase_);
     }
 
     public static final int COLUMN_NAME_FIELD_NUMBER = 1;
@@ -14148,87 +14153,35 @@ java.lang.String defaultValue);
       }
     }
 
-    public static final int TARGET_TYPE_FIELD_NUMBER = 2;
-    private int targetType_;
+    public static final int MODIFY_TYPE_FIELD_NUMBER = 2;
     /**
-     * <code>.greptime.v1.ColumnDataType target_type = 2;</code>
-     * @return The enum numeric value on the wire for targetType.
-     */
-    @java.lang.Override public int getTargetTypeValue() {
-      return targetType_;
-    }
-    /**
-     * <code>.greptime.v1.ColumnDataType target_type = 2;</code>
-     * @return The targetType.
-     */
-    @java.lang.Override public io.greptime.v1.Common.ColumnDataType getTargetType() {
-      @SuppressWarnings("deprecation")
-      io.greptime.v1.Common.ColumnDataType result = io.greptime.v1.Common.ColumnDataType.valueOf(targetType_);
-      return result == null ? io.greptime.v1.Common.ColumnDataType.UNRECOGNIZED : result;
-    }
-
-    public static final int TARGET_TYPE_EXTENSION_FIELD_NUMBER = 3;
-    private io.greptime.v1.Common.ColumnDataTypeExtension targetTypeExtension_;
-    /**
-     * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 3;</code>
-     * @return Whether the targetTypeExtension field is set.
+     * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
+     * @return Whether the modifyType field is set.
      */
     @java.lang.Override
-    public boolean hasTargetTypeExtension() {
-      return targetTypeExtension_ != null;
+    public boolean hasModifyType() {
+      return bodyCase_ == 2;
     }
     /**
-     * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 3;</code>
-     * @return The targetTypeExtension.
+     * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
+     * @return The modifyType.
      */
     @java.lang.Override
-    public io.greptime.v1.Common.ColumnDataTypeExtension getTargetTypeExtension() {
-      return targetTypeExtension_ == null ? io.greptime.v1.Common.ColumnDataTypeExtension.getDefaultInstance() : targetTypeExtension_;
-    }
-    /**
-     * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 3;</code>
-     */
-    @java.lang.Override
-    public io.greptime.v1.Common.ColumnDataTypeExtensionOrBuilder getTargetTypeExtensionOrBuilder() {
-      return getTargetTypeExtension();
-    }
-
-    public static final int TARGET_NAME_FIELD_NUMBER = 4;
-    private volatile java.lang.Object targetName_;
-    /**
-     * <code>string target_name = 4;</code>
-     * @return The targetName.
-     */
-    @java.lang.Override
-    public java.lang.String getTargetName() {
-      java.lang.Object ref = targetName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        targetName_ = s;
-        return s;
+    public io.greptime.v1.Ddl.ModifyColumnType getModifyType() {
+      if (bodyCase_ == 2) {
+         return (io.greptime.v1.Ddl.ModifyColumnType) body_;
       }
+      return io.greptime.v1.Ddl.ModifyColumnType.getDefaultInstance();
     }
     /**
-     * <code>string target_name = 4;</code>
-     * @return The bytes for targetName.
+     * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getTargetNameBytes() {
-      java.lang.Object ref = targetName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        targetName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
+    public io.greptime.v1.Ddl.ModifyColumnTypeOrBuilder getModifyTypeOrBuilder() {
+      if (bodyCase_ == 2) {
+         return (io.greptime.v1.Ddl.ModifyColumnType) body_;
       }
+      return io.greptime.v1.Ddl.ModifyColumnType.getDefaultInstance();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -14248,14 +14201,8 @@ java.lang.String defaultValue);
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(columnName_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, columnName_);
       }
-      if (targetType_ != io.greptime.v1.Common.ColumnDataType.BOOLEAN.getNumber()) {
-        output.writeEnum(2, targetType_);
-      }
-      if (targetTypeExtension_ != null) {
-        output.writeMessage(3, getTargetTypeExtension());
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(targetName_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, targetName_);
+      if (bodyCase_ == 2) {
+        output.writeMessage(2, (io.greptime.v1.Ddl.ModifyColumnType) body_);
       }
       unknownFields.writeTo(output);
     }
@@ -14269,16 +14216,9 @@ java.lang.String defaultValue);
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(columnName_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, columnName_);
       }
-      if (targetType_ != io.greptime.v1.Common.ColumnDataType.BOOLEAN.getNumber()) {
+      if (bodyCase_ == 2) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, targetType_);
-      }
-      if (targetTypeExtension_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getTargetTypeExtension());
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(targetName_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, targetName_);
+          .computeMessageSize(2, (io.greptime.v1.Ddl.ModifyColumnType) body_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -14297,14 +14237,15 @@ java.lang.String defaultValue);
 
       if (!getColumnName()
           .equals(other.getColumnName())) return false;
-      if (targetType_ != other.targetType_) return false;
-      if (hasTargetTypeExtension() != other.hasTargetTypeExtension()) return false;
-      if (hasTargetTypeExtension()) {
-        if (!getTargetTypeExtension()
-            .equals(other.getTargetTypeExtension())) return false;
+      if (!getBodyCase().equals(other.getBodyCase())) return false;
+      switch (bodyCase_) {
+        case 2:
+          if (!getModifyType()
+              .equals(other.getModifyType())) return false;
+          break;
+        case 0:
+        default:
       }
-      if (!getTargetName()
-          .equals(other.getTargetName())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -14318,14 +14259,14 @@ java.lang.String defaultValue);
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + COLUMN_NAME_FIELD_NUMBER;
       hash = (53 * hash) + getColumnName().hashCode();
-      hash = (37 * hash) + TARGET_TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + targetType_;
-      if (hasTargetTypeExtension()) {
-        hash = (37 * hash) + TARGET_TYPE_EXTENSION_FIELD_NUMBER;
-        hash = (53 * hash) + getTargetTypeExtension().hashCode();
+      switch (bodyCase_) {
+        case 2:
+          hash = (37 * hash) + MODIFY_TYPE_FIELD_NUMBER;
+          hash = (53 * hash) + getModifyType().hashCode();
+          break;
+        case 0:
+        default:
       }
-      hash = (37 * hash) + TARGET_NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getTargetName().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -14461,16 +14402,8 @@ java.lang.String defaultValue);
         super.clear();
         columnName_ = "";
 
-        targetType_ = 0;
-
-        if (targetTypeExtensionBuilder_ == null) {
-          targetTypeExtension_ = null;
-        } else {
-          targetTypeExtension_ = null;
-          targetTypeExtensionBuilder_ = null;
-        }
-        targetName_ = "";
-
+        bodyCase_ = 0;
+        body_ = null;
         return this;
       }
 
@@ -14498,13 +14431,14 @@ java.lang.String defaultValue);
       public io.greptime.v1.Ddl.ModifyColumn buildPartial() {
         io.greptime.v1.Ddl.ModifyColumn result = new io.greptime.v1.Ddl.ModifyColumn(this);
         result.columnName_ = columnName_;
-        result.targetType_ = targetType_;
-        if (targetTypeExtensionBuilder_ == null) {
-          result.targetTypeExtension_ = targetTypeExtension_;
-        } else {
-          result.targetTypeExtension_ = targetTypeExtensionBuilder_.build();
+        if (bodyCase_ == 2) {
+          if (modifyTypeBuilder_ == null) {
+            result.body_ = body_;
+          } else {
+            result.body_ = modifyTypeBuilder_.build();
+          }
         }
-        result.targetName_ = targetName_;
+        result.bodyCase_ = bodyCase_;
         onBuilt();
         return result;
       }
@@ -14557,15 +14491,14 @@ java.lang.String defaultValue);
           columnName_ = other.columnName_;
           onChanged();
         }
-        if (other.targetType_ != 0) {
-          setTargetTypeValue(other.getTargetTypeValue());
-        }
-        if (other.hasTargetTypeExtension()) {
-          mergeTargetTypeExtension(other.getTargetTypeExtension());
-        }
-        if (!other.getTargetName().isEmpty()) {
-          targetName_ = other.targetName_;
-          onChanged();
+        switch (other.getBodyCase()) {
+          case MODIFY_TYPE: {
+            mergeModifyType(other.getModifyType());
+            break;
+          }
+          case BODY_NOT_SET: {
+            break;
+          }
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -14595,6 +14528,21 @@ java.lang.String defaultValue);
         }
         return this;
       }
+      private int bodyCase_ = 0;
+      private java.lang.Object body_;
+      public BodyCase
+          getBodyCase() {
+        return BodyCase.forNumber(
+            bodyCase_);
+      }
+
+      public Builder clearBody() {
+        bodyCase_ = 0;
+        body_ = null;
+        onChanged();
+        return this;
+      }
+
 
       private java.lang.Object columnName_ = "";
       /**
@@ -14672,253 +14620,146 @@ java.lang.String defaultValue);
         return this;
       }
 
-      private int targetType_ = 0;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.greptime.v1.Ddl.ModifyColumnType, io.greptime.v1.Ddl.ModifyColumnType.Builder, io.greptime.v1.Ddl.ModifyColumnTypeOrBuilder> modifyTypeBuilder_;
       /**
-       * <code>.greptime.v1.ColumnDataType target_type = 2;</code>
-       * @return The enum numeric value on the wire for targetType.
-       */
-      @java.lang.Override public int getTargetTypeValue() {
-        return targetType_;
-      }
-      /**
-       * <code>.greptime.v1.ColumnDataType target_type = 2;</code>
-       * @param value The enum numeric value on the wire for targetType to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTargetTypeValue(int value) {
-        
-        targetType_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.greptime.v1.ColumnDataType target_type = 2;</code>
-       * @return The targetType.
+       * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
+       * @return Whether the modifyType field is set.
        */
       @java.lang.Override
-      public io.greptime.v1.Common.ColumnDataType getTargetType() {
-        @SuppressWarnings("deprecation")
-        io.greptime.v1.Common.ColumnDataType result = io.greptime.v1.Common.ColumnDataType.valueOf(targetType_);
-        return result == null ? io.greptime.v1.Common.ColumnDataType.UNRECOGNIZED : result;
+      public boolean hasModifyType() {
+        return bodyCase_ == 2;
       }
       /**
-       * <code>.greptime.v1.ColumnDataType target_type = 2;</code>
-       * @param value The targetType to set.
-       * @return This builder for chaining.
+       * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
+       * @return The modifyType.
        */
-      public Builder setTargetType(io.greptime.v1.Common.ColumnDataType value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        targetType_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.greptime.v1.ColumnDataType target_type = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearTargetType() {
-        
-        targetType_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private io.greptime.v1.Common.ColumnDataTypeExtension targetTypeExtension_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          io.greptime.v1.Common.ColumnDataTypeExtension, io.greptime.v1.Common.ColumnDataTypeExtension.Builder, io.greptime.v1.Common.ColumnDataTypeExtensionOrBuilder> targetTypeExtensionBuilder_;
-      /**
-       * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 3;</code>
-       * @return Whether the targetTypeExtension field is set.
-       */
-      public boolean hasTargetTypeExtension() {
-        return targetTypeExtensionBuilder_ != null || targetTypeExtension_ != null;
-      }
-      /**
-       * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 3;</code>
-       * @return The targetTypeExtension.
-       */
-      public io.greptime.v1.Common.ColumnDataTypeExtension getTargetTypeExtension() {
-        if (targetTypeExtensionBuilder_ == null) {
-          return targetTypeExtension_ == null ? io.greptime.v1.Common.ColumnDataTypeExtension.getDefaultInstance() : targetTypeExtension_;
+      @java.lang.Override
+      public io.greptime.v1.Ddl.ModifyColumnType getModifyType() {
+        if (modifyTypeBuilder_ == null) {
+          if (bodyCase_ == 2) {
+            return (io.greptime.v1.Ddl.ModifyColumnType) body_;
+          }
+          return io.greptime.v1.Ddl.ModifyColumnType.getDefaultInstance();
         } else {
-          return targetTypeExtensionBuilder_.getMessage();
+          if (bodyCase_ == 2) {
+            return modifyTypeBuilder_.getMessage();
+          }
+          return io.greptime.v1.Ddl.ModifyColumnType.getDefaultInstance();
         }
       }
       /**
-       * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 3;</code>
+       * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
        */
-      public Builder setTargetTypeExtension(io.greptime.v1.Common.ColumnDataTypeExtension value) {
-        if (targetTypeExtensionBuilder_ == null) {
+      public Builder setModifyType(io.greptime.v1.Ddl.ModifyColumnType value) {
+        if (modifyTypeBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          targetTypeExtension_ = value;
+          body_ = value;
           onChanged();
         } else {
-          targetTypeExtensionBuilder_.setMessage(value);
+          modifyTypeBuilder_.setMessage(value);
         }
-
+        bodyCase_ = 2;
         return this;
       }
       /**
-       * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 3;</code>
+       * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
        */
-      public Builder setTargetTypeExtension(
-          io.greptime.v1.Common.ColumnDataTypeExtension.Builder builderForValue) {
-        if (targetTypeExtensionBuilder_ == null) {
-          targetTypeExtension_ = builderForValue.build();
+      public Builder setModifyType(
+          io.greptime.v1.Ddl.ModifyColumnType.Builder builderForValue) {
+        if (modifyTypeBuilder_ == null) {
+          body_ = builderForValue.build();
           onChanged();
         } else {
-          targetTypeExtensionBuilder_.setMessage(builderForValue.build());
+          modifyTypeBuilder_.setMessage(builderForValue.build());
         }
-
+        bodyCase_ = 2;
         return this;
       }
       /**
-       * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 3;</code>
+       * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
        */
-      public Builder mergeTargetTypeExtension(io.greptime.v1.Common.ColumnDataTypeExtension value) {
-        if (targetTypeExtensionBuilder_ == null) {
-          if (targetTypeExtension_ != null) {
-            targetTypeExtension_ =
-              io.greptime.v1.Common.ColumnDataTypeExtension.newBuilder(targetTypeExtension_).mergeFrom(value).buildPartial();
+      public Builder mergeModifyType(io.greptime.v1.Ddl.ModifyColumnType value) {
+        if (modifyTypeBuilder_ == null) {
+          if (bodyCase_ == 2 &&
+              body_ != io.greptime.v1.Ddl.ModifyColumnType.getDefaultInstance()) {
+            body_ = io.greptime.v1.Ddl.ModifyColumnType.newBuilder((io.greptime.v1.Ddl.ModifyColumnType) body_)
+                .mergeFrom(value).buildPartial();
           } else {
-            targetTypeExtension_ = value;
+            body_ = value;
           }
           onChanged();
         } else {
-          targetTypeExtensionBuilder_.mergeFrom(value);
+          if (bodyCase_ == 2) {
+            modifyTypeBuilder_.mergeFrom(value);
+          } else {
+            modifyTypeBuilder_.setMessage(value);
+          }
         }
-
+        bodyCase_ = 2;
         return this;
       }
       /**
-       * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 3;</code>
+       * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
        */
-      public Builder clearTargetTypeExtension() {
-        if (targetTypeExtensionBuilder_ == null) {
-          targetTypeExtension_ = null;
-          onChanged();
+      public Builder clearModifyType() {
+        if (modifyTypeBuilder_ == null) {
+          if (bodyCase_ == 2) {
+            bodyCase_ = 0;
+            body_ = null;
+            onChanged();
+          }
         } else {
-          targetTypeExtension_ = null;
-          targetTypeExtensionBuilder_ = null;
+          if (bodyCase_ == 2) {
+            bodyCase_ = 0;
+            body_ = null;
+          }
+          modifyTypeBuilder_.clear();
         }
-
         return this;
       }
       /**
-       * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 3;</code>
+       * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
        */
-      public io.greptime.v1.Common.ColumnDataTypeExtension.Builder getTargetTypeExtensionBuilder() {
-        
-        onChanged();
-        return getTargetTypeExtensionFieldBuilder().getBuilder();
+      public io.greptime.v1.Ddl.ModifyColumnType.Builder getModifyTypeBuilder() {
+        return getModifyTypeFieldBuilder().getBuilder();
       }
       /**
-       * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 3;</code>
+       * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
        */
-      public io.greptime.v1.Common.ColumnDataTypeExtensionOrBuilder getTargetTypeExtensionOrBuilder() {
-        if (targetTypeExtensionBuilder_ != null) {
-          return targetTypeExtensionBuilder_.getMessageOrBuilder();
+      @java.lang.Override
+      public io.greptime.v1.Ddl.ModifyColumnTypeOrBuilder getModifyTypeOrBuilder() {
+        if ((bodyCase_ == 2) && (modifyTypeBuilder_ != null)) {
+          return modifyTypeBuilder_.getMessageOrBuilder();
         } else {
-          return targetTypeExtension_ == null ?
-              io.greptime.v1.Common.ColumnDataTypeExtension.getDefaultInstance() : targetTypeExtension_;
+          if (bodyCase_ == 2) {
+            return (io.greptime.v1.Ddl.ModifyColumnType) body_;
+          }
+          return io.greptime.v1.Ddl.ModifyColumnType.getDefaultInstance();
         }
       }
       /**
-       * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 3;</code>
+       * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          io.greptime.v1.Common.ColumnDataTypeExtension, io.greptime.v1.Common.ColumnDataTypeExtension.Builder, io.greptime.v1.Common.ColumnDataTypeExtensionOrBuilder> 
-          getTargetTypeExtensionFieldBuilder() {
-        if (targetTypeExtensionBuilder_ == null) {
-          targetTypeExtensionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              io.greptime.v1.Common.ColumnDataTypeExtension, io.greptime.v1.Common.ColumnDataTypeExtension.Builder, io.greptime.v1.Common.ColumnDataTypeExtensionOrBuilder>(
-                  getTargetTypeExtension(),
+          io.greptime.v1.Ddl.ModifyColumnType, io.greptime.v1.Ddl.ModifyColumnType.Builder, io.greptime.v1.Ddl.ModifyColumnTypeOrBuilder> 
+          getModifyTypeFieldBuilder() {
+        if (modifyTypeBuilder_ == null) {
+          if (!(bodyCase_ == 2)) {
+            body_ = io.greptime.v1.Ddl.ModifyColumnType.getDefaultInstance();
+          }
+          modifyTypeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.greptime.v1.Ddl.ModifyColumnType, io.greptime.v1.Ddl.ModifyColumnType.Builder, io.greptime.v1.Ddl.ModifyColumnTypeOrBuilder>(
+                  (io.greptime.v1.Ddl.ModifyColumnType) body_,
                   getParentForChildren(),
                   isClean());
-          targetTypeExtension_ = null;
+          body_ = null;
         }
-        return targetTypeExtensionBuilder_;
-      }
-
-      private java.lang.Object targetName_ = "";
-      /**
-       * <code>string target_name = 4;</code>
-       * @return The targetName.
-       */
-      public java.lang.String getTargetName() {
-        java.lang.Object ref = targetName_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          targetName_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string target_name = 4;</code>
-       * @return The bytes for targetName.
-       */
-      public com.google.protobuf.ByteString
-          getTargetNameBytes() {
-        java.lang.Object ref = targetName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          targetName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string target_name = 4;</code>
-       * @param value The targetName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTargetName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        targetName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string target_name = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearTargetName() {
-        
-        targetName_ = getDefaultInstance().getTargetName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string target_name = 4;</code>
-       * @param value The bytes for targetName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTargetNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        targetName_ = value;
-        onChanged();
-        return this;
+        bodyCase_ = 2;
+        onChanged();;
+        return modifyTypeBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -14968,6 +14809,736 @@ java.lang.String defaultValue);
 
     @java.lang.Override
     public io.greptime.v1.Ddl.ModifyColumn getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ModifyColumnTypeOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:greptime.v1.ModifyColumnType)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.greptime.v1.ColumnDataType target_type = 1;</code>
+     * @return The enum numeric value on the wire for targetType.
+     */
+    int getTargetTypeValue();
+    /**
+     * <code>.greptime.v1.ColumnDataType target_type = 1;</code>
+     * @return The targetType.
+     */
+    io.greptime.v1.Common.ColumnDataType getTargetType();
+
+    /**
+     * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 2;</code>
+     * @return Whether the targetTypeExtension field is set.
+     */
+    boolean hasTargetTypeExtension();
+    /**
+     * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 2;</code>
+     * @return The targetTypeExtension.
+     */
+    io.greptime.v1.Common.ColumnDataTypeExtension getTargetTypeExtension();
+    /**
+     * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 2;</code>
+     */
+    io.greptime.v1.Common.ColumnDataTypeExtensionOrBuilder getTargetTypeExtensionOrBuilder();
+  }
+  /**
+   * Protobuf type {@code greptime.v1.ModifyColumnType}
+   */
+  public static final class ModifyColumnType extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:greptime.v1.ModifyColumnType)
+      ModifyColumnTypeOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ModifyColumnType.newBuilder() to construct.
+    private ModifyColumnType(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ModifyColumnType() {
+      targetType_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ModifyColumnType();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ModifyColumnType(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              int rawValue = input.readEnum();
+
+              targetType_ = rawValue;
+              break;
+            }
+            case 18: {
+              io.greptime.v1.Common.ColumnDataTypeExtension.Builder subBuilder = null;
+              if (targetTypeExtension_ != null) {
+                subBuilder = targetTypeExtension_.toBuilder();
+              }
+              targetTypeExtension_ = input.readMessage(io.greptime.v1.Common.ColumnDataTypeExtension.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(targetTypeExtension_);
+                targetTypeExtension_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return io.greptime.v1.Ddl.internal_static_greptime_v1_ModifyColumnType_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return io.greptime.v1.Ddl.internal_static_greptime_v1_ModifyColumnType_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.greptime.v1.Ddl.ModifyColumnType.class, io.greptime.v1.Ddl.ModifyColumnType.Builder.class);
+    }
+
+    public static final int TARGET_TYPE_FIELD_NUMBER = 1;
+    private int targetType_;
+    /**
+     * <code>.greptime.v1.ColumnDataType target_type = 1;</code>
+     * @return The enum numeric value on the wire for targetType.
+     */
+    @java.lang.Override public int getTargetTypeValue() {
+      return targetType_;
+    }
+    /**
+     * <code>.greptime.v1.ColumnDataType target_type = 1;</code>
+     * @return The targetType.
+     */
+    @java.lang.Override public io.greptime.v1.Common.ColumnDataType getTargetType() {
+      @SuppressWarnings("deprecation")
+      io.greptime.v1.Common.ColumnDataType result = io.greptime.v1.Common.ColumnDataType.valueOf(targetType_);
+      return result == null ? io.greptime.v1.Common.ColumnDataType.UNRECOGNIZED : result;
+    }
+
+    public static final int TARGET_TYPE_EXTENSION_FIELD_NUMBER = 2;
+    private io.greptime.v1.Common.ColumnDataTypeExtension targetTypeExtension_;
+    /**
+     * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 2;</code>
+     * @return Whether the targetTypeExtension field is set.
+     */
+    @java.lang.Override
+    public boolean hasTargetTypeExtension() {
+      return targetTypeExtension_ != null;
+    }
+    /**
+     * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 2;</code>
+     * @return The targetTypeExtension.
+     */
+    @java.lang.Override
+    public io.greptime.v1.Common.ColumnDataTypeExtension getTargetTypeExtension() {
+      return targetTypeExtension_ == null ? io.greptime.v1.Common.ColumnDataTypeExtension.getDefaultInstance() : targetTypeExtension_;
+    }
+    /**
+     * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 2;</code>
+     */
+    @java.lang.Override
+    public io.greptime.v1.Common.ColumnDataTypeExtensionOrBuilder getTargetTypeExtensionOrBuilder() {
+      return getTargetTypeExtension();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (targetType_ != io.greptime.v1.Common.ColumnDataType.BOOLEAN.getNumber()) {
+        output.writeEnum(1, targetType_);
+      }
+      if (targetTypeExtension_ != null) {
+        output.writeMessage(2, getTargetTypeExtension());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (targetType_ != io.greptime.v1.Common.ColumnDataType.BOOLEAN.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, targetType_);
+      }
+      if (targetTypeExtension_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getTargetTypeExtension());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof io.greptime.v1.Ddl.ModifyColumnType)) {
+        return super.equals(obj);
+      }
+      io.greptime.v1.Ddl.ModifyColumnType other = (io.greptime.v1.Ddl.ModifyColumnType) obj;
+
+      if (targetType_ != other.targetType_) return false;
+      if (hasTargetTypeExtension() != other.hasTargetTypeExtension()) return false;
+      if (hasTargetTypeExtension()) {
+        if (!getTargetTypeExtension()
+            .equals(other.getTargetTypeExtension())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TARGET_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + targetType_;
+      if (hasTargetTypeExtension()) {
+        hash = (37 * hash) + TARGET_TYPE_EXTENSION_FIELD_NUMBER;
+        hash = (53 * hash) + getTargetTypeExtension().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static io.greptime.v1.Ddl.ModifyColumnType parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.greptime.v1.Ddl.ModifyColumnType parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.greptime.v1.Ddl.ModifyColumnType parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.greptime.v1.Ddl.ModifyColumnType parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.greptime.v1.Ddl.ModifyColumnType parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.greptime.v1.Ddl.ModifyColumnType parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.greptime.v1.Ddl.ModifyColumnType parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static io.greptime.v1.Ddl.ModifyColumnType parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static io.greptime.v1.Ddl.ModifyColumnType parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static io.greptime.v1.Ddl.ModifyColumnType parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static io.greptime.v1.Ddl.ModifyColumnType parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static io.greptime.v1.Ddl.ModifyColumnType parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(io.greptime.v1.Ddl.ModifyColumnType prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code greptime.v1.ModifyColumnType}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:greptime.v1.ModifyColumnType)
+        io.greptime.v1.Ddl.ModifyColumnTypeOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return io.greptime.v1.Ddl.internal_static_greptime_v1_ModifyColumnType_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return io.greptime.v1.Ddl.internal_static_greptime_v1_ModifyColumnType_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.greptime.v1.Ddl.ModifyColumnType.class, io.greptime.v1.Ddl.ModifyColumnType.Builder.class);
+      }
+
+      // Construct using io.greptime.v1.Ddl.ModifyColumnType.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        targetType_ = 0;
+
+        if (targetTypeExtensionBuilder_ == null) {
+          targetTypeExtension_ = null;
+        } else {
+          targetTypeExtension_ = null;
+          targetTypeExtensionBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return io.greptime.v1.Ddl.internal_static_greptime_v1_ModifyColumnType_descriptor;
+      }
+
+      @java.lang.Override
+      public io.greptime.v1.Ddl.ModifyColumnType getDefaultInstanceForType() {
+        return io.greptime.v1.Ddl.ModifyColumnType.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public io.greptime.v1.Ddl.ModifyColumnType build() {
+        io.greptime.v1.Ddl.ModifyColumnType result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public io.greptime.v1.Ddl.ModifyColumnType buildPartial() {
+        io.greptime.v1.Ddl.ModifyColumnType result = new io.greptime.v1.Ddl.ModifyColumnType(this);
+        result.targetType_ = targetType_;
+        if (targetTypeExtensionBuilder_ == null) {
+          result.targetTypeExtension_ = targetTypeExtension_;
+        } else {
+          result.targetTypeExtension_ = targetTypeExtensionBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof io.greptime.v1.Ddl.ModifyColumnType) {
+          return mergeFrom((io.greptime.v1.Ddl.ModifyColumnType)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(io.greptime.v1.Ddl.ModifyColumnType other) {
+        if (other == io.greptime.v1.Ddl.ModifyColumnType.getDefaultInstance()) return this;
+        if (other.targetType_ != 0) {
+          setTargetTypeValue(other.getTargetTypeValue());
+        }
+        if (other.hasTargetTypeExtension()) {
+          mergeTargetTypeExtension(other.getTargetTypeExtension());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        io.greptime.v1.Ddl.ModifyColumnType parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.greptime.v1.Ddl.ModifyColumnType) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int targetType_ = 0;
+      /**
+       * <code>.greptime.v1.ColumnDataType target_type = 1;</code>
+       * @return The enum numeric value on the wire for targetType.
+       */
+      @java.lang.Override public int getTargetTypeValue() {
+        return targetType_;
+      }
+      /**
+       * <code>.greptime.v1.ColumnDataType target_type = 1;</code>
+       * @param value The enum numeric value on the wire for targetType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTargetTypeValue(int value) {
+        
+        targetType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.greptime.v1.ColumnDataType target_type = 1;</code>
+       * @return The targetType.
+       */
+      @java.lang.Override
+      public io.greptime.v1.Common.ColumnDataType getTargetType() {
+        @SuppressWarnings("deprecation")
+        io.greptime.v1.Common.ColumnDataType result = io.greptime.v1.Common.ColumnDataType.valueOf(targetType_);
+        return result == null ? io.greptime.v1.Common.ColumnDataType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.greptime.v1.ColumnDataType target_type = 1;</code>
+       * @param value The targetType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTargetType(io.greptime.v1.Common.ColumnDataType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        targetType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.greptime.v1.ColumnDataType target_type = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTargetType() {
+        
+        targetType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private io.greptime.v1.Common.ColumnDataTypeExtension targetTypeExtension_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.greptime.v1.Common.ColumnDataTypeExtension, io.greptime.v1.Common.ColumnDataTypeExtension.Builder, io.greptime.v1.Common.ColumnDataTypeExtensionOrBuilder> targetTypeExtensionBuilder_;
+      /**
+       * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 2;</code>
+       * @return Whether the targetTypeExtension field is set.
+       */
+      public boolean hasTargetTypeExtension() {
+        return targetTypeExtensionBuilder_ != null || targetTypeExtension_ != null;
+      }
+      /**
+       * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 2;</code>
+       * @return The targetTypeExtension.
+       */
+      public io.greptime.v1.Common.ColumnDataTypeExtension getTargetTypeExtension() {
+        if (targetTypeExtensionBuilder_ == null) {
+          return targetTypeExtension_ == null ? io.greptime.v1.Common.ColumnDataTypeExtension.getDefaultInstance() : targetTypeExtension_;
+        } else {
+          return targetTypeExtensionBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 2;</code>
+       */
+      public Builder setTargetTypeExtension(io.greptime.v1.Common.ColumnDataTypeExtension value) {
+        if (targetTypeExtensionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          targetTypeExtension_ = value;
+          onChanged();
+        } else {
+          targetTypeExtensionBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 2;</code>
+       */
+      public Builder setTargetTypeExtension(
+          io.greptime.v1.Common.ColumnDataTypeExtension.Builder builderForValue) {
+        if (targetTypeExtensionBuilder_ == null) {
+          targetTypeExtension_ = builderForValue.build();
+          onChanged();
+        } else {
+          targetTypeExtensionBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 2;</code>
+       */
+      public Builder mergeTargetTypeExtension(io.greptime.v1.Common.ColumnDataTypeExtension value) {
+        if (targetTypeExtensionBuilder_ == null) {
+          if (targetTypeExtension_ != null) {
+            targetTypeExtension_ =
+              io.greptime.v1.Common.ColumnDataTypeExtension.newBuilder(targetTypeExtension_).mergeFrom(value).buildPartial();
+          } else {
+            targetTypeExtension_ = value;
+          }
+          onChanged();
+        } else {
+          targetTypeExtensionBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 2;</code>
+       */
+      public Builder clearTargetTypeExtension() {
+        if (targetTypeExtensionBuilder_ == null) {
+          targetTypeExtension_ = null;
+          onChanged();
+        } else {
+          targetTypeExtension_ = null;
+          targetTypeExtensionBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 2;</code>
+       */
+      public io.greptime.v1.Common.ColumnDataTypeExtension.Builder getTargetTypeExtensionBuilder() {
+        
+        onChanged();
+        return getTargetTypeExtensionFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 2;</code>
+       */
+      public io.greptime.v1.Common.ColumnDataTypeExtensionOrBuilder getTargetTypeExtensionOrBuilder() {
+        if (targetTypeExtensionBuilder_ != null) {
+          return targetTypeExtensionBuilder_.getMessageOrBuilder();
+        } else {
+          return targetTypeExtension_ == null ?
+              io.greptime.v1.Common.ColumnDataTypeExtension.getDefaultInstance() : targetTypeExtension_;
+        }
+      }
+      /**
+       * <code>.greptime.v1.ColumnDataTypeExtension target_type_extension = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.greptime.v1.Common.ColumnDataTypeExtension, io.greptime.v1.Common.ColumnDataTypeExtension.Builder, io.greptime.v1.Common.ColumnDataTypeExtensionOrBuilder> 
+          getTargetTypeExtensionFieldBuilder() {
+        if (targetTypeExtensionBuilder_ == null) {
+          targetTypeExtensionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.greptime.v1.Common.ColumnDataTypeExtension, io.greptime.v1.Common.ColumnDataTypeExtension.Builder, io.greptime.v1.Common.ColumnDataTypeExtensionOrBuilder>(
+                  getTargetTypeExtension(),
+                  getParentForChildren(),
+                  isClean());
+          targetTypeExtension_ = null;
+        }
+        return targetTypeExtensionBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:greptime.v1.ModifyColumnType)
+    }
+
+    // @@protoc_insertion_point(class_scope:greptime.v1.ModifyColumnType)
+    private static final io.greptime.v1.Ddl.ModifyColumnType DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new io.greptime.v1.Ddl.ModifyColumnType();
+    }
+
+    public static io.greptime.v1.Ddl.ModifyColumnType getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ModifyColumnType>
+        PARSER = new com.google.protobuf.AbstractParser<ModifyColumnType>() {
+      @java.lang.Override
+      public ModifyColumnType parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ModifyColumnType(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ModifyColumnType> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ModifyColumnType> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public io.greptime.v1.Ddl.ModifyColumnType getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -18236,6 +18807,11 @@ java.lang.String defaultValue);
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_greptime_v1_ModifyColumn_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_greptime_v1_ModifyColumnType_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_greptime_v1_ModifyColumnType_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_greptime_v1_DropColumn_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -18312,25 +18888,26 @@ java.lang.String defaultValue);
       "new_table_name\030\001 \001(\t\"i\n\tAddColumn\022*\n\ncol" +
       "umn_def\030\001 \001(\0132\026.greptime.v1.ColumnDef\0220\n" +
       "\010location\030\003 \001(\0132\036.greptime.v1.AddColumnL" +
-      "ocation\"\257\001\n\014ModifyColumn\022\023\n\013column_name\030" +
-      "\001 \001(\t\0220\n\013target_type\030\002 \001(\0162\033.greptime.v1" +
-      ".ColumnDataType\022C\n\025target_type_extension" +
-      "\030\003 \001(\0132$.greptime.v1.ColumnDataTypeExten" +
-      "sion\022\023\n\013target_name\030\004 \001(\t\"\032\n\nDropColumn\022" +
-      "\014\n\004name\030\001 \001(\t\"\025\n\007TableId\022\n\n\002id\030\001 \001(\r\"\377\001\n" +
-      "\tColumnDef\022\014\n\004name\030\001 \001(\t\022.\n\tdata_type\030\002 " +
-      "\001(\0162\033.greptime.v1.ColumnDataType\022\023\n\013is_n" +
-      "ullable\030\003 \001(\010\022\032\n\022default_constraint\030\004 \001(" +
-      "\014\0220\n\rsemantic_type\030\005 \001(\0162\031.greptime.v1.S" +
-      "emanticType\022\017\n\007comment\030\006 \001(\t\022@\n\022datatype" +
-      "_extension\030\007 \001(\0132$.greptime.v1.ColumnDat" +
-      "aTypeExtension\"\230\001\n\021AddColumnLocation\022B\n\r" +
-      "location_type\030\001 \001(\0162+.greptime.v1.AddCol" +
-      "umnLocation.LocationType\022\031\n\021after_column" +
-      "_name\030\002 \001(\t\"$\n\014LocationType\022\t\n\005FIRST\020\000\022\t" +
-      "\n\005AFTER\020\001BL\n\016io.greptime.v1B\003DdlZ5github" +
-      ".com/GreptimeTeam/greptime-proto/go/grep" +
-      "time/v1b\006proto3"
+      "ocation\"a\n\014ModifyColumn\022\023\n\013column_name\030\001" +
+      " \001(\t\0224\n\013modify_type\030\002 \001(\0132\035.greptime.v1." +
+      "ModifyColumnTypeH\000B\006\n\004body\"\211\001\n\020ModifyCol" +
+      "umnType\0220\n\013target_type\030\001 \001(\0162\033.greptime." +
+      "v1.ColumnDataType\022C\n\025target_type_extensi" +
+      "on\030\002 \001(\0132$.greptime.v1.ColumnDataTypeExt" +
+      "ension\"\032\n\nDropColumn\022\014\n\004name\030\001 \001(\t\"\025\n\007Ta" +
+      "bleId\022\n\n\002id\030\001 \001(\r\"\377\001\n\tColumnDef\022\014\n\004name\030" +
+      "\001 \001(\t\022.\n\tdata_type\030\002 \001(\0162\033.greptime.v1.C" +
+      "olumnDataType\022\023\n\013is_nullable\030\003 \001(\010\022\032\n\022de" +
+      "fault_constraint\030\004 \001(\014\0220\n\rsemantic_type\030" +
+      "\005 \001(\0162\031.greptime.v1.SemanticType\022\017\n\007comm" +
+      "ent\030\006 \001(\t\022@\n\022datatype_extension\030\007 \001(\0132$." +
+      "greptime.v1.ColumnDataTypeExtension\"\230\001\n\021" +
+      "AddColumnLocation\022B\n\rlocation_type\030\001 \001(\016" +
+      "2+.greptime.v1.AddColumnLocation.Locatio" +
+      "nType\022\031\n\021after_column_name\030\002 \001(\t\"$\n\014Loca" +
+      "tionType\022\t\n\005FIRST\020\000\022\t\n\005AFTER\020\001BL\n\016io.gre" +
+      "ptime.v1B\003DdlZ5github.com/GreptimeTeam/g" +
+      "reptime-proto/go/greptime/v1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -18426,27 +19003,33 @@ java.lang.String defaultValue);
     internal_static_greptime_v1_ModifyColumn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_greptime_v1_ModifyColumn_descriptor,
-        new java.lang.String[] { "ColumnName", "TargetType", "TargetTypeExtension", "TargetName", });
-    internal_static_greptime_v1_DropColumn_descriptor =
+        new java.lang.String[] { "ColumnName", "ModifyType", "Body", });
+    internal_static_greptime_v1_ModifyColumnType_descriptor =
       getDescriptor().getMessageTypes().get(13);
+    internal_static_greptime_v1_ModifyColumnType_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_greptime_v1_ModifyColumnType_descriptor,
+        new java.lang.String[] { "TargetType", "TargetTypeExtension", });
+    internal_static_greptime_v1_DropColumn_descriptor =
+      getDescriptor().getMessageTypes().get(14);
     internal_static_greptime_v1_DropColumn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_greptime_v1_DropColumn_descriptor,
         new java.lang.String[] { "Name", });
     internal_static_greptime_v1_TableId_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_greptime_v1_TableId_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_greptime_v1_TableId_descriptor,
         new java.lang.String[] { "Id", });
     internal_static_greptime_v1_ColumnDef_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_greptime_v1_ColumnDef_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_greptime_v1_ColumnDef_descriptor,
         new java.lang.String[] { "Name", "DataType", "IsNullable", "DefaultConstraint", "SemanticType", "Comment", "DatatypeExtension", });
     internal_static_greptime_v1_AddColumnLocation_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_greptime_v1_AddColumnLocation_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_greptime_v1_AddColumnLocation_descriptor,
