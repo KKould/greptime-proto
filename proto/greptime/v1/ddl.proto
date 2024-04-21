@@ -106,8 +106,13 @@ message AddColumn {
 message ModifyColumn {
     string column_name = 1;
     oneof body {
-            ModifyColumnType modify_type = 2;
+        ModifyColumnType modify_type = 2;
+        ModifyColumnName modify_name = 3;
     }
+}
+
+message ModifyColumnName {
+    string target_name = 1;
 }
 
 message ModifyColumnType {

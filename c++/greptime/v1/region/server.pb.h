@@ -110,6 +110,9 @@ extern InsertRequestsDefaultTypeInternal _InsertRequests_default_instance_;
 class ModifyColumn;
 struct ModifyColumnDefaultTypeInternal;
 extern ModifyColumnDefaultTypeInternal _ModifyColumn_default_instance_;
+class ModifyColumnName;
+struct ModifyColumnNameDefaultTypeInternal;
+extern ModifyColumnNameDefaultTypeInternal _ModifyColumnName_default_instance_;
 class ModifyColumnType;
 struct ModifyColumnTypeDefaultTypeInternal;
 extern ModifyColumnTypeDefaultTypeInternal _ModifyColumnType_default_instance_;
@@ -169,6 +172,7 @@ template<> ::greptime::v1::region::FlushRequest* Arena::CreateMaybeMessage<::gre
 template<> ::greptime::v1::region::InsertRequest* Arena::CreateMaybeMessage<::greptime::v1::region::InsertRequest>(Arena*);
 template<> ::greptime::v1::region::InsertRequests* Arena::CreateMaybeMessage<::greptime::v1::region::InsertRequests>(Arena*);
 template<> ::greptime::v1::region::ModifyColumn* Arena::CreateMaybeMessage<::greptime::v1::region::ModifyColumn>(Arena*);
+template<> ::greptime::v1::region::ModifyColumnName* Arena::CreateMaybeMessage<::greptime::v1::region::ModifyColumnName>(Arena*);
 template<> ::greptime::v1::region::ModifyColumnType* Arena::CreateMaybeMessage<::greptime::v1::region::ModifyColumnType>(Arena*);
 template<> ::greptime::v1::region::ModifyColumns* Arena::CreateMaybeMessage<::greptime::v1::region::ModifyColumns>(Arena*);
 template<> ::greptime::v1::region::OpenRequest* Arena::CreateMaybeMessage<::greptime::v1::region::OpenRequest>(Arena*);
@@ -4120,6 +4124,7 @@ class ModifyColumn final :
   }
   enum BodyCase {
     kModifyType = 2,
+    kModifyName = 3,
     BODY_NOT_SET = 0,
   };
 
@@ -4203,6 +4208,7 @@ class ModifyColumn final :
   enum : int {
     kColumnNameFieldNumber = 1,
     kModifyTypeFieldNumber = 2,
+    kModifyNameFieldNumber = 3,
   };
   // string column_name = 1;
   void clear_column_name();
@@ -4236,12 +4242,31 @@ class ModifyColumn final :
       ::greptime::v1::region::ModifyColumnType* modify_type);
   ::greptime::v1::region::ModifyColumnType* unsafe_arena_release_modify_type();
 
+  // .greptime.v1.region.ModifyColumnName modify_name = 3;
+  bool has_modify_name() const;
+  private:
+  bool _internal_has_modify_name() const;
+  public:
+  void clear_modify_name();
+  const ::greptime::v1::region::ModifyColumnName& modify_name() const;
+  PROTOBUF_NODISCARD ::greptime::v1::region::ModifyColumnName* release_modify_name();
+  ::greptime::v1::region::ModifyColumnName* mutable_modify_name();
+  void set_allocated_modify_name(::greptime::v1::region::ModifyColumnName* modify_name);
+  private:
+  const ::greptime::v1::region::ModifyColumnName& _internal_modify_name() const;
+  ::greptime::v1::region::ModifyColumnName* _internal_mutable_modify_name();
+  public:
+  void unsafe_arena_set_allocated_modify_name(
+      ::greptime::v1::region::ModifyColumnName* modify_name);
+  ::greptime::v1::region::ModifyColumnName* unsafe_arena_release_modify_name();
+
   void clear_body();
   BodyCase body_case() const;
   // @@protoc_insertion_point(class_scope:greptime.v1.region.ModifyColumn)
  private:
   class _Internal;
   void set_has_modify_type();
+  void set_has_modify_name();
 
   inline bool has_body() const;
   inline void clear_has_body();
@@ -4255,6 +4280,7 @@ class ModifyColumn final :
       constexpr BodyUnion() : _constinit_{} {}
         ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
       ::greptime::v1::region::ModifyColumnType* modify_type_;
+      ::greptime::v1::region::ModifyColumnName* modify_name_;
     } body_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     uint32_t _oneof_case_[1];
@@ -4433,6 +4459,159 @@ class ModifyColumnType final :
 };
 // -------------------------------------------------------------------
 
+class ModifyColumnName final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:greptime.v1.region.ModifyColumnName) */ {
+ public:
+  inline ModifyColumnName() : ModifyColumnName(nullptr) {}
+  ~ModifyColumnName() override;
+  explicit PROTOBUF_CONSTEXPR ModifyColumnName(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ModifyColumnName(const ModifyColumnName& from);
+  ModifyColumnName(ModifyColumnName&& from) noexcept
+    : ModifyColumnName() {
+    *this = ::std::move(from);
+  }
+
+  inline ModifyColumnName& operator=(const ModifyColumnName& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ModifyColumnName& operator=(ModifyColumnName&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ModifyColumnName& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ModifyColumnName* internal_default_instance() {
+    return reinterpret_cast<const ModifyColumnName*>(
+               &_ModifyColumnName_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    26;
+
+  friend void swap(ModifyColumnName& a, ModifyColumnName& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ModifyColumnName* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ModifyColumnName* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ModifyColumnName* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ModifyColumnName>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ModifyColumnName& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const ModifyColumnName& from) {
+    ModifyColumnName::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ModifyColumnName* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "greptime.v1.region.ModifyColumnName";
+  }
+  protected:
+  explicit ModifyColumnName(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTargetNameFieldNumber = 1,
+  };
+  // string target_name = 1;
+  void clear_target_name();
+  const std::string& target_name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_target_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_target_name();
+  PROTOBUF_NODISCARD std::string* release_target_name();
+  void set_allocated_target_name(std::string* target_name);
+  private:
+  const std::string& _internal_target_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_target_name(const std::string& value);
+  std::string* _internal_mutable_target_name();
+  public:
+
+  // @@protoc_insertion_point(class_scope:greptime.v1.region.ModifyColumnName)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr target_name_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_greptime_2fv1_2fregion_2fserver_2eproto;
+};
+// -------------------------------------------------------------------
+
 class DropColumn final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:greptime.v1.region.DropColumn) */ {
  public:
@@ -4481,7 +4660,7 @@ class DropColumn final :
                &_DropColumn_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    26;
+    27;
 
   friend void swap(DropColumn& a, DropColumn& b) {
     a.Swap(&b);
@@ -4634,7 +4813,7 @@ class FlushRequest final :
                &_FlushRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    27;
+    28;
 
   friend void swap(FlushRequest& a, FlushRequest& b) {
     a.Swap(&b);
@@ -4782,7 +4961,7 @@ class CompactRequest final :
                &_CompactRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    28;
+    29;
 
   friend void swap(CompactRequest& a, CompactRequest& b) {
     a.Swap(&b);
@@ -4930,7 +5109,7 @@ class TruncateRequest final :
                &_TruncateRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    29;
+    30;
 
   friend void swap(TruncateRequest& a, TruncateRequest& b) {
     a.Swap(&b);
@@ -5078,7 +5257,7 @@ class RegionColumnDef final :
                &_RegionColumnDef_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    30;
+    31;
 
   friend void swap(RegionColumnDef& a, RegionColumnDef& b) {
     a.Swap(&b);
@@ -8254,6 +8433,80 @@ inline ::greptime::v1::region::ModifyColumnType* ModifyColumn::mutable_modify_ty
   return _msg;
 }
 
+// .greptime.v1.region.ModifyColumnName modify_name = 3;
+inline bool ModifyColumn::_internal_has_modify_name() const {
+  return body_case() == kModifyName;
+}
+inline bool ModifyColumn::has_modify_name() const {
+  return _internal_has_modify_name();
+}
+inline void ModifyColumn::set_has_modify_name() {
+  _impl_._oneof_case_[0] = kModifyName;
+}
+inline void ModifyColumn::clear_modify_name() {
+  if (_internal_has_modify_name()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.body_.modify_name_;
+    }
+    clear_has_body();
+  }
+}
+inline ::greptime::v1::region::ModifyColumnName* ModifyColumn::release_modify_name() {
+  // @@protoc_insertion_point(field_release:greptime.v1.region.ModifyColumn.modify_name)
+  if (_internal_has_modify_name()) {
+    clear_has_body();
+    ::greptime::v1::region::ModifyColumnName* temp = _impl_.body_.modify_name_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.body_.modify_name_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::greptime::v1::region::ModifyColumnName& ModifyColumn::_internal_modify_name() const {
+  return _internal_has_modify_name()
+      ? *_impl_.body_.modify_name_
+      : reinterpret_cast< ::greptime::v1::region::ModifyColumnName&>(::greptime::v1::region::_ModifyColumnName_default_instance_);
+}
+inline const ::greptime::v1::region::ModifyColumnName& ModifyColumn::modify_name() const {
+  // @@protoc_insertion_point(field_get:greptime.v1.region.ModifyColumn.modify_name)
+  return _internal_modify_name();
+}
+inline ::greptime::v1::region::ModifyColumnName* ModifyColumn::unsafe_arena_release_modify_name() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:greptime.v1.region.ModifyColumn.modify_name)
+  if (_internal_has_modify_name()) {
+    clear_has_body();
+    ::greptime::v1::region::ModifyColumnName* temp = _impl_.body_.modify_name_;
+    _impl_.body_.modify_name_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void ModifyColumn::unsafe_arena_set_allocated_modify_name(::greptime::v1::region::ModifyColumnName* modify_name) {
+  clear_body();
+  if (modify_name) {
+    set_has_modify_name();
+    _impl_.body_.modify_name_ = modify_name;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:greptime.v1.region.ModifyColumn.modify_name)
+}
+inline ::greptime::v1::region::ModifyColumnName* ModifyColumn::_internal_mutable_modify_name() {
+  if (!_internal_has_modify_name()) {
+    clear_body();
+    set_has_modify_name();
+    _impl_.body_.modify_name_ = CreateMaybeMessage< ::greptime::v1::region::ModifyColumnName >(GetArenaForAllocation());
+  }
+  return _impl_.body_.modify_name_;
+}
+inline ::greptime::v1::region::ModifyColumnName* ModifyColumn::mutable_modify_name() {
+  ::greptime::v1::region::ModifyColumnName* _msg = _internal_mutable_modify_name();
+  // @@protoc_insertion_point(field_mutable:greptime.v1.region.ModifyColumn.modify_name)
+  return _msg;
+}
+
 inline bool ModifyColumn::has_body() const {
   return body_case() != BODY_NOT_SET;
 }
@@ -8370,6 +8623,60 @@ inline void ModifyColumnType::set_allocated_target_type_extension(::greptime::v1
   }
   _impl_.target_type_extension_ = target_type_extension;
   // @@protoc_insertion_point(field_set_allocated:greptime.v1.region.ModifyColumnType.target_type_extension)
+}
+
+// -------------------------------------------------------------------
+
+// ModifyColumnName
+
+// string target_name = 1;
+inline void ModifyColumnName::clear_target_name() {
+  _impl_.target_name_.ClearToEmpty();
+}
+inline const std::string& ModifyColumnName::target_name() const {
+  // @@protoc_insertion_point(field_get:greptime.v1.region.ModifyColumnName.target_name)
+  return _internal_target_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ModifyColumnName::set_target_name(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.target_name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:greptime.v1.region.ModifyColumnName.target_name)
+}
+inline std::string* ModifyColumnName::mutable_target_name() {
+  std::string* _s = _internal_mutable_target_name();
+  // @@protoc_insertion_point(field_mutable:greptime.v1.region.ModifyColumnName.target_name)
+  return _s;
+}
+inline const std::string& ModifyColumnName::_internal_target_name() const {
+  return _impl_.target_name_.Get();
+}
+inline void ModifyColumnName::_internal_set_target_name(const std::string& value) {
+  
+  _impl_.target_name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ModifyColumnName::_internal_mutable_target_name() {
+  
+  return _impl_.target_name_.Mutable(GetArenaForAllocation());
+}
+inline std::string* ModifyColumnName::release_target_name() {
+  // @@protoc_insertion_point(field_release:greptime.v1.region.ModifyColumnName.target_name)
+  return _impl_.target_name_.Release();
+}
+inline void ModifyColumnName::set_allocated_target_name(std::string* target_name) {
+  if (target_name != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.target_name_.SetAllocated(target_name, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.target_name_.IsDefault()) {
+    _impl_.target_name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:greptime.v1.region.ModifyColumnName.target_name)
 }
 
 // -------------------------------------------------------------------
@@ -8610,6 +8917,8 @@ inline void RegionColumnDef::set_column_id(uint32_t value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
