@@ -20686,19 +20686,36 @@ java.lang.String defaultValue);
         getColumnNameBytes();
 
     /**
-     * <code>.greptime.v1.ModifyColumnBody body = 2;</code>
-     * @return Whether the body field is set.
+     * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
+     * @return Whether the modifyType field is set.
      */
-    boolean hasBody();
+    boolean hasModifyType();
     /**
-     * <code>.greptime.v1.ModifyColumnBody body = 2;</code>
-     * @return The body.
+     * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
+     * @return The modifyType.
      */
-    io.greptime.v1.Ddl.ModifyColumnBody getBody();
+    io.greptime.v1.Ddl.ModifyColumnType getModifyType();
     /**
-     * <code>.greptime.v1.ModifyColumnBody body = 2;</code>
+     * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
      */
-    io.greptime.v1.Ddl.ModifyColumnBodyOrBuilder getBodyOrBuilder();
+    io.greptime.v1.Ddl.ModifyColumnTypeOrBuilder getModifyTypeOrBuilder();
+
+    /**
+     * <code>.greptime.v1.ModifyColumnName modify_name = 3;</code>
+     * @return Whether the modifyName field is set.
+     */
+    boolean hasModifyName();
+    /**
+     * <code>.greptime.v1.ModifyColumnName modify_name = 3;</code>
+     * @return The modifyName.
+     */
+    io.greptime.v1.Ddl.ModifyColumnName getModifyName();
+    /**
+     * <code>.greptime.v1.ModifyColumnName modify_name = 3;</code>
+     */
+    io.greptime.v1.Ddl.ModifyColumnNameOrBuilder getModifyNameOrBuilder();
+
+    public io.greptime.v1.region.Server.ModifyColumn.BodyCase getBodyCase();
   }
   /**
    * Protobuf type {@code greptime.v1.region.ModifyColumn}
@@ -20753,16 +20770,31 @@ java.lang.String defaultValue);
               break;
             }
             case 18: {
-              io.greptime.v1.Ddl.ModifyColumnBody.Builder subBuilder = null;
-              if (body_ != null) {
-                subBuilder = body_.toBuilder();
+              io.greptime.v1.Ddl.ModifyColumnType.Builder subBuilder = null;
+              if (bodyCase_ == 2) {
+                subBuilder = ((io.greptime.v1.Ddl.ModifyColumnType) body_).toBuilder();
               }
-              body_ = input.readMessage(io.greptime.v1.Ddl.ModifyColumnBody.parser(), extensionRegistry);
+              body_ =
+                  input.readMessage(io.greptime.v1.Ddl.ModifyColumnType.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(body_);
+                subBuilder.mergeFrom((io.greptime.v1.Ddl.ModifyColumnType) body_);
                 body_ = subBuilder.buildPartial();
               }
-
+              bodyCase_ = 2;
+              break;
+            }
+            case 26: {
+              io.greptime.v1.Ddl.ModifyColumnName.Builder subBuilder = null;
+              if (bodyCase_ == 3) {
+                subBuilder = ((io.greptime.v1.Ddl.ModifyColumnName) body_).toBuilder();
+              }
+              body_ =
+                  input.readMessage(io.greptime.v1.Ddl.ModifyColumnName.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((io.greptime.v1.Ddl.ModifyColumnName) body_);
+                body_ = subBuilder.buildPartial();
+              }
+              bodyCase_ = 3;
               break;
             }
             default: {
@@ -20797,6 +20829,47 @@ java.lang.String defaultValue);
       return io.greptime.v1.region.Server.internal_static_greptime_v1_region_ModifyColumn_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               io.greptime.v1.region.Server.ModifyColumn.class, io.greptime.v1.region.Server.ModifyColumn.Builder.class);
+    }
+
+    private int bodyCase_ = 0;
+    private java.lang.Object body_;
+    public enum BodyCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      MODIFY_TYPE(2),
+      MODIFY_NAME(3),
+      BODY_NOT_SET(0);
+      private final int value;
+      private BodyCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static BodyCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static BodyCase forNumber(int value) {
+        switch (value) {
+          case 2: return MODIFY_TYPE;
+          case 3: return MODIFY_NAME;
+          case 0: return BODY_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public BodyCase
+    getBodyCase() {
+      return BodyCase.forNumber(
+          bodyCase_);
     }
 
     public static final int COLUMN_NAME_FIELD_NUMBER = 1;
@@ -20837,30 +20910,66 @@ java.lang.String defaultValue);
       }
     }
 
-    public static final int BODY_FIELD_NUMBER = 2;
-    private io.greptime.v1.Ddl.ModifyColumnBody body_;
+    public static final int MODIFY_TYPE_FIELD_NUMBER = 2;
     /**
-     * <code>.greptime.v1.ModifyColumnBody body = 2;</code>
-     * @return Whether the body field is set.
+     * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
+     * @return Whether the modifyType field is set.
      */
     @java.lang.Override
-    public boolean hasBody() {
-      return body_ != null;
+    public boolean hasModifyType() {
+      return bodyCase_ == 2;
     }
     /**
-     * <code>.greptime.v1.ModifyColumnBody body = 2;</code>
-     * @return The body.
+     * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
+     * @return The modifyType.
      */
     @java.lang.Override
-    public io.greptime.v1.Ddl.ModifyColumnBody getBody() {
-      return body_ == null ? io.greptime.v1.Ddl.ModifyColumnBody.getDefaultInstance() : body_;
+    public io.greptime.v1.Ddl.ModifyColumnType getModifyType() {
+      if (bodyCase_ == 2) {
+         return (io.greptime.v1.Ddl.ModifyColumnType) body_;
+      }
+      return io.greptime.v1.Ddl.ModifyColumnType.getDefaultInstance();
     }
     /**
-     * <code>.greptime.v1.ModifyColumnBody body = 2;</code>
+     * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
      */
     @java.lang.Override
-    public io.greptime.v1.Ddl.ModifyColumnBodyOrBuilder getBodyOrBuilder() {
-      return getBody();
+    public io.greptime.v1.Ddl.ModifyColumnTypeOrBuilder getModifyTypeOrBuilder() {
+      if (bodyCase_ == 2) {
+         return (io.greptime.v1.Ddl.ModifyColumnType) body_;
+      }
+      return io.greptime.v1.Ddl.ModifyColumnType.getDefaultInstance();
+    }
+
+    public static final int MODIFY_NAME_FIELD_NUMBER = 3;
+    /**
+     * <code>.greptime.v1.ModifyColumnName modify_name = 3;</code>
+     * @return Whether the modifyName field is set.
+     */
+    @java.lang.Override
+    public boolean hasModifyName() {
+      return bodyCase_ == 3;
+    }
+    /**
+     * <code>.greptime.v1.ModifyColumnName modify_name = 3;</code>
+     * @return The modifyName.
+     */
+    @java.lang.Override
+    public io.greptime.v1.Ddl.ModifyColumnName getModifyName() {
+      if (bodyCase_ == 3) {
+         return (io.greptime.v1.Ddl.ModifyColumnName) body_;
+      }
+      return io.greptime.v1.Ddl.ModifyColumnName.getDefaultInstance();
+    }
+    /**
+     * <code>.greptime.v1.ModifyColumnName modify_name = 3;</code>
+     */
+    @java.lang.Override
+    public io.greptime.v1.Ddl.ModifyColumnNameOrBuilder getModifyNameOrBuilder() {
+      if (bodyCase_ == 3) {
+         return (io.greptime.v1.Ddl.ModifyColumnName) body_;
+      }
+      return io.greptime.v1.Ddl.ModifyColumnName.getDefaultInstance();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -20880,8 +20989,11 @@ java.lang.String defaultValue);
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(columnName_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, columnName_);
       }
-      if (body_ != null) {
-        output.writeMessage(2, getBody());
+      if (bodyCase_ == 2) {
+        output.writeMessage(2, (io.greptime.v1.Ddl.ModifyColumnType) body_);
+      }
+      if (bodyCase_ == 3) {
+        output.writeMessage(3, (io.greptime.v1.Ddl.ModifyColumnName) body_);
       }
       unknownFields.writeTo(output);
     }
@@ -20895,9 +21007,13 @@ java.lang.String defaultValue);
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(columnName_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, columnName_);
       }
-      if (body_ != null) {
+      if (bodyCase_ == 2) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getBody());
+          .computeMessageSize(2, (io.greptime.v1.Ddl.ModifyColumnType) body_);
+      }
+      if (bodyCase_ == 3) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, (io.greptime.v1.Ddl.ModifyColumnName) body_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -20916,10 +21032,18 @@ java.lang.String defaultValue);
 
       if (!getColumnName()
           .equals(other.getColumnName())) return false;
-      if (hasBody() != other.hasBody()) return false;
-      if (hasBody()) {
-        if (!getBody()
-            .equals(other.getBody())) return false;
+      if (!getBodyCase().equals(other.getBodyCase())) return false;
+      switch (bodyCase_) {
+        case 2:
+          if (!getModifyType()
+              .equals(other.getModifyType())) return false;
+          break;
+        case 3:
+          if (!getModifyName()
+              .equals(other.getModifyName())) return false;
+          break;
+        case 0:
+        default:
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -20934,9 +21058,17 @@ java.lang.String defaultValue);
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + COLUMN_NAME_FIELD_NUMBER;
       hash = (53 * hash) + getColumnName().hashCode();
-      if (hasBody()) {
-        hash = (37 * hash) + BODY_FIELD_NUMBER;
-        hash = (53 * hash) + getBody().hashCode();
+      switch (bodyCase_) {
+        case 2:
+          hash = (37 * hash) + MODIFY_TYPE_FIELD_NUMBER;
+          hash = (53 * hash) + getModifyType().hashCode();
+          break;
+        case 3:
+          hash = (37 * hash) + MODIFY_NAME_FIELD_NUMBER;
+          hash = (53 * hash) + getModifyName().hashCode();
+          break;
+        case 0:
+        default:
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -21073,12 +21205,8 @@ java.lang.String defaultValue);
         super.clear();
         columnName_ = "";
 
-        if (bodyBuilder_ == null) {
-          body_ = null;
-        } else {
-          body_ = null;
-          bodyBuilder_ = null;
-        }
+        bodyCase_ = 0;
+        body_ = null;
         return this;
       }
 
@@ -21106,11 +21234,21 @@ java.lang.String defaultValue);
       public io.greptime.v1.region.Server.ModifyColumn buildPartial() {
         io.greptime.v1.region.Server.ModifyColumn result = new io.greptime.v1.region.Server.ModifyColumn(this);
         result.columnName_ = columnName_;
-        if (bodyBuilder_ == null) {
-          result.body_ = body_;
-        } else {
-          result.body_ = bodyBuilder_.build();
+        if (bodyCase_ == 2) {
+          if (modifyTypeBuilder_ == null) {
+            result.body_ = body_;
+          } else {
+            result.body_ = modifyTypeBuilder_.build();
+          }
         }
+        if (bodyCase_ == 3) {
+          if (modifyNameBuilder_ == null) {
+            result.body_ = body_;
+          } else {
+            result.body_ = modifyNameBuilder_.build();
+          }
+        }
+        result.bodyCase_ = bodyCase_;
         onBuilt();
         return result;
       }
@@ -21163,8 +21301,18 @@ java.lang.String defaultValue);
           columnName_ = other.columnName_;
           onChanged();
         }
-        if (other.hasBody()) {
-          mergeBody(other.getBody());
+        switch (other.getBodyCase()) {
+          case MODIFY_TYPE: {
+            mergeModifyType(other.getModifyType());
+            break;
+          }
+          case MODIFY_NAME: {
+            mergeModifyName(other.getModifyName());
+            break;
+          }
+          case BODY_NOT_SET: {
+            break;
+          }
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -21194,6 +21342,21 @@ java.lang.String defaultValue);
         }
         return this;
       }
+      private int bodyCase_ = 0;
+      private java.lang.Object body_;
+      public BodyCase
+          getBodyCase() {
+        return BodyCase.forNumber(
+            bodyCase_);
+      }
+
+      public Builder clearBody() {
+        bodyCase_ = 0;
+        body_ = null;
+        onChanged();
+        return this;
+      }
+
 
       private java.lang.Object columnName_ = "";
       /**
@@ -21271,123 +21434,288 @@ java.lang.String defaultValue);
         return this;
       }
 
-      private io.greptime.v1.Ddl.ModifyColumnBody body_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          io.greptime.v1.Ddl.ModifyColumnBody, io.greptime.v1.Ddl.ModifyColumnBody.Builder, io.greptime.v1.Ddl.ModifyColumnBodyOrBuilder> bodyBuilder_;
+          io.greptime.v1.Ddl.ModifyColumnType, io.greptime.v1.Ddl.ModifyColumnType.Builder, io.greptime.v1.Ddl.ModifyColumnTypeOrBuilder> modifyTypeBuilder_;
       /**
-       * <code>.greptime.v1.ModifyColumnBody body = 2;</code>
-       * @return Whether the body field is set.
+       * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
+       * @return Whether the modifyType field is set.
        */
-      public boolean hasBody() {
-        return bodyBuilder_ != null || body_ != null;
+      @java.lang.Override
+      public boolean hasModifyType() {
+        return bodyCase_ == 2;
       }
       /**
-       * <code>.greptime.v1.ModifyColumnBody body = 2;</code>
-       * @return The body.
+       * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
+       * @return The modifyType.
        */
-      public io.greptime.v1.Ddl.ModifyColumnBody getBody() {
-        if (bodyBuilder_ == null) {
-          return body_ == null ? io.greptime.v1.Ddl.ModifyColumnBody.getDefaultInstance() : body_;
+      @java.lang.Override
+      public io.greptime.v1.Ddl.ModifyColumnType getModifyType() {
+        if (modifyTypeBuilder_ == null) {
+          if (bodyCase_ == 2) {
+            return (io.greptime.v1.Ddl.ModifyColumnType) body_;
+          }
+          return io.greptime.v1.Ddl.ModifyColumnType.getDefaultInstance();
         } else {
-          return bodyBuilder_.getMessage();
+          if (bodyCase_ == 2) {
+            return modifyTypeBuilder_.getMessage();
+          }
+          return io.greptime.v1.Ddl.ModifyColumnType.getDefaultInstance();
         }
       }
       /**
-       * <code>.greptime.v1.ModifyColumnBody body = 2;</code>
+       * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
        */
-      public Builder setBody(io.greptime.v1.Ddl.ModifyColumnBody value) {
-        if (bodyBuilder_ == null) {
+      public Builder setModifyType(io.greptime.v1.Ddl.ModifyColumnType value) {
+        if (modifyTypeBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
           body_ = value;
           onChanged();
         } else {
-          bodyBuilder_.setMessage(value);
+          modifyTypeBuilder_.setMessage(value);
         }
-
+        bodyCase_ = 2;
         return this;
       }
       /**
-       * <code>.greptime.v1.ModifyColumnBody body = 2;</code>
+       * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
        */
-      public Builder setBody(
-          io.greptime.v1.Ddl.ModifyColumnBody.Builder builderForValue) {
-        if (bodyBuilder_ == null) {
+      public Builder setModifyType(
+          io.greptime.v1.Ddl.ModifyColumnType.Builder builderForValue) {
+        if (modifyTypeBuilder_ == null) {
           body_ = builderForValue.build();
           onChanged();
         } else {
-          bodyBuilder_.setMessage(builderForValue.build());
+          modifyTypeBuilder_.setMessage(builderForValue.build());
         }
-
+        bodyCase_ = 2;
         return this;
       }
       /**
-       * <code>.greptime.v1.ModifyColumnBody body = 2;</code>
+       * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
        */
-      public Builder mergeBody(io.greptime.v1.Ddl.ModifyColumnBody value) {
-        if (bodyBuilder_ == null) {
-          if (body_ != null) {
-            body_ =
-              io.greptime.v1.Ddl.ModifyColumnBody.newBuilder(body_).mergeFrom(value).buildPartial();
+      public Builder mergeModifyType(io.greptime.v1.Ddl.ModifyColumnType value) {
+        if (modifyTypeBuilder_ == null) {
+          if (bodyCase_ == 2 &&
+              body_ != io.greptime.v1.Ddl.ModifyColumnType.getDefaultInstance()) {
+            body_ = io.greptime.v1.Ddl.ModifyColumnType.newBuilder((io.greptime.v1.Ddl.ModifyColumnType) body_)
+                .mergeFrom(value).buildPartial();
           } else {
             body_ = value;
           }
           onChanged();
         } else {
-          bodyBuilder_.mergeFrom(value);
+          if (bodyCase_ == 2) {
+            modifyTypeBuilder_.mergeFrom(value);
+          } else {
+            modifyTypeBuilder_.setMessage(value);
+          }
         }
-
+        bodyCase_ = 2;
         return this;
       }
       /**
-       * <code>.greptime.v1.ModifyColumnBody body = 2;</code>
+       * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
        */
-      public Builder clearBody() {
-        if (bodyBuilder_ == null) {
-          body_ = null;
-          onChanged();
+      public Builder clearModifyType() {
+        if (modifyTypeBuilder_ == null) {
+          if (bodyCase_ == 2) {
+            bodyCase_ = 0;
+            body_ = null;
+            onChanged();
+          }
         } else {
-          body_ = null;
-          bodyBuilder_ = null;
+          if (bodyCase_ == 2) {
+            bodyCase_ = 0;
+            body_ = null;
+          }
+          modifyTypeBuilder_.clear();
         }
-
         return this;
       }
       /**
-       * <code>.greptime.v1.ModifyColumnBody body = 2;</code>
+       * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
        */
-      public io.greptime.v1.Ddl.ModifyColumnBody.Builder getBodyBuilder() {
-        
-        onChanged();
-        return getBodyFieldBuilder().getBuilder();
+      public io.greptime.v1.Ddl.ModifyColumnType.Builder getModifyTypeBuilder() {
+        return getModifyTypeFieldBuilder().getBuilder();
       }
       /**
-       * <code>.greptime.v1.ModifyColumnBody body = 2;</code>
+       * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
        */
-      public io.greptime.v1.Ddl.ModifyColumnBodyOrBuilder getBodyOrBuilder() {
-        if (bodyBuilder_ != null) {
-          return bodyBuilder_.getMessageOrBuilder();
+      @java.lang.Override
+      public io.greptime.v1.Ddl.ModifyColumnTypeOrBuilder getModifyTypeOrBuilder() {
+        if ((bodyCase_ == 2) && (modifyTypeBuilder_ != null)) {
+          return modifyTypeBuilder_.getMessageOrBuilder();
         } else {
-          return body_ == null ?
-              io.greptime.v1.Ddl.ModifyColumnBody.getDefaultInstance() : body_;
+          if (bodyCase_ == 2) {
+            return (io.greptime.v1.Ddl.ModifyColumnType) body_;
+          }
+          return io.greptime.v1.Ddl.ModifyColumnType.getDefaultInstance();
         }
       }
       /**
-       * <code>.greptime.v1.ModifyColumnBody body = 2;</code>
+       * <code>.greptime.v1.ModifyColumnType modify_type = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          io.greptime.v1.Ddl.ModifyColumnBody, io.greptime.v1.Ddl.ModifyColumnBody.Builder, io.greptime.v1.Ddl.ModifyColumnBodyOrBuilder> 
-          getBodyFieldBuilder() {
-        if (bodyBuilder_ == null) {
-          bodyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              io.greptime.v1.Ddl.ModifyColumnBody, io.greptime.v1.Ddl.ModifyColumnBody.Builder, io.greptime.v1.Ddl.ModifyColumnBodyOrBuilder>(
-                  getBody(),
+          io.greptime.v1.Ddl.ModifyColumnType, io.greptime.v1.Ddl.ModifyColumnType.Builder, io.greptime.v1.Ddl.ModifyColumnTypeOrBuilder> 
+          getModifyTypeFieldBuilder() {
+        if (modifyTypeBuilder_ == null) {
+          if (!(bodyCase_ == 2)) {
+            body_ = io.greptime.v1.Ddl.ModifyColumnType.getDefaultInstance();
+          }
+          modifyTypeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.greptime.v1.Ddl.ModifyColumnType, io.greptime.v1.Ddl.ModifyColumnType.Builder, io.greptime.v1.Ddl.ModifyColumnTypeOrBuilder>(
+                  (io.greptime.v1.Ddl.ModifyColumnType) body_,
                   getParentForChildren(),
                   isClean());
           body_ = null;
         }
-        return bodyBuilder_;
+        bodyCase_ = 2;
+        onChanged();;
+        return modifyTypeBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.greptime.v1.Ddl.ModifyColumnName, io.greptime.v1.Ddl.ModifyColumnName.Builder, io.greptime.v1.Ddl.ModifyColumnNameOrBuilder> modifyNameBuilder_;
+      /**
+       * <code>.greptime.v1.ModifyColumnName modify_name = 3;</code>
+       * @return Whether the modifyName field is set.
+       */
+      @java.lang.Override
+      public boolean hasModifyName() {
+        return bodyCase_ == 3;
+      }
+      /**
+       * <code>.greptime.v1.ModifyColumnName modify_name = 3;</code>
+       * @return The modifyName.
+       */
+      @java.lang.Override
+      public io.greptime.v1.Ddl.ModifyColumnName getModifyName() {
+        if (modifyNameBuilder_ == null) {
+          if (bodyCase_ == 3) {
+            return (io.greptime.v1.Ddl.ModifyColumnName) body_;
+          }
+          return io.greptime.v1.Ddl.ModifyColumnName.getDefaultInstance();
+        } else {
+          if (bodyCase_ == 3) {
+            return modifyNameBuilder_.getMessage();
+          }
+          return io.greptime.v1.Ddl.ModifyColumnName.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.greptime.v1.ModifyColumnName modify_name = 3;</code>
+       */
+      public Builder setModifyName(io.greptime.v1.Ddl.ModifyColumnName value) {
+        if (modifyNameBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          body_ = value;
+          onChanged();
+        } else {
+          modifyNameBuilder_.setMessage(value);
+        }
+        bodyCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>.greptime.v1.ModifyColumnName modify_name = 3;</code>
+       */
+      public Builder setModifyName(
+          io.greptime.v1.Ddl.ModifyColumnName.Builder builderForValue) {
+        if (modifyNameBuilder_ == null) {
+          body_ = builderForValue.build();
+          onChanged();
+        } else {
+          modifyNameBuilder_.setMessage(builderForValue.build());
+        }
+        bodyCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>.greptime.v1.ModifyColumnName modify_name = 3;</code>
+       */
+      public Builder mergeModifyName(io.greptime.v1.Ddl.ModifyColumnName value) {
+        if (modifyNameBuilder_ == null) {
+          if (bodyCase_ == 3 &&
+              body_ != io.greptime.v1.Ddl.ModifyColumnName.getDefaultInstance()) {
+            body_ = io.greptime.v1.Ddl.ModifyColumnName.newBuilder((io.greptime.v1.Ddl.ModifyColumnName) body_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            body_ = value;
+          }
+          onChanged();
+        } else {
+          if (bodyCase_ == 3) {
+            modifyNameBuilder_.mergeFrom(value);
+          } else {
+            modifyNameBuilder_.setMessage(value);
+          }
+        }
+        bodyCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>.greptime.v1.ModifyColumnName modify_name = 3;</code>
+       */
+      public Builder clearModifyName() {
+        if (modifyNameBuilder_ == null) {
+          if (bodyCase_ == 3) {
+            bodyCase_ = 0;
+            body_ = null;
+            onChanged();
+          }
+        } else {
+          if (bodyCase_ == 3) {
+            bodyCase_ = 0;
+            body_ = null;
+          }
+          modifyNameBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.greptime.v1.ModifyColumnName modify_name = 3;</code>
+       */
+      public io.greptime.v1.Ddl.ModifyColumnName.Builder getModifyNameBuilder() {
+        return getModifyNameFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.greptime.v1.ModifyColumnName modify_name = 3;</code>
+       */
+      @java.lang.Override
+      public io.greptime.v1.Ddl.ModifyColumnNameOrBuilder getModifyNameOrBuilder() {
+        if ((bodyCase_ == 3) && (modifyNameBuilder_ != null)) {
+          return modifyNameBuilder_.getMessageOrBuilder();
+        } else {
+          if (bodyCase_ == 3) {
+            return (io.greptime.v1.Ddl.ModifyColumnName) body_;
+          }
+          return io.greptime.v1.Ddl.ModifyColumnName.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.greptime.v1.ModifyColumnName modify_name = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.greptime.v1.Ddl.ModifyColumnName, io.greptime.v1.Ddl.ModifyColumnName.Builder, io.greptime.v1.Ddl.ModifyColumnNameOrBuilder> 
+          getModifyNameFieldBuilder() {
+        if (modifyNameBuilder_ == null) {
+          if (!(bodyCase_ == 3)) {
+            body_ = io.greptime.v1.Ddl.ModifyColumnName.getDefaultInstance();
+          }
+          modifyNameBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.greptime.v1.Ddl.ModifyColumnName, io.greptime.v1.Ddl.ModifyColumnName.Builder, io.greptime.v1.Ddl.ModifyColumnNameOrBuilder>(
+                  (io.greptime.v1.Ddl.ModifyColumnName) body_,
+                  getParentForChildren(),
+                  isClean());
+          body_ = null;
+        }
+        bodyCase_ = 3;
+        onChanged();;
+        return modifyNameBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -24424,20 +24752,21 @@ java.lang.String defaultValue);
       "eptime.v1.region.ModifyColumn\"v\n\tAddColu" +
       "mn\0227\n\ncolumn_def\030\001 \001(\0132#.greptime.v1.reg" +
       "ion.RegionColumnDef\0220\n\010location\030\003 \001(\0132\036." +
-      "greptime.v1.AddColumnLocation\"P\n\014ModifyC" +
-      "olumn\022\023\n\013column_name\030\001 \001(\t\022+\n\004body\030\002 \001(\013" +
-      "2\035.greptime.v1.ModifyColumnBody\"\032\n\nDropC" +
-      "olumn\022\014\n\004name\030\001 \001(\t\"!\n\014FlushRequest\022\021\n\tr" +
-      "egion_id\030\001 \001(\004\"#\n\016CompactRequest\022\021\n\tregi" +
-      "on_id\030\001 \001(\004\"$\n\017TruncateRequest\022\021\n\tregion" +
-      "_id\030\001 \001(\004\"P\n\017RegionColumnDef\022*\n\ncolumn_d" +
-      "ef\030\001 \001(\0132\026.greptime.v1.ColumnDef\022\021\n\tcolu" +
-      "mn_id\030\002 \001(\r2Y\n\006Region\022O\n\006Handle\022!.grepti" +
-      "me.v1.region.RegionRequest\032\".greptime.v1" +
-      ".region.RegionResponseB]\n\025io.greptime.v1" +
-      ".regionB\006ServerZ<github.com/GreptimeTeam" +
-      "/greptime-proto/go/greptime/v1/regionb\006p" +
-      "roto3"
+      "greptime.v1.AddColumnLocation\"\227\001\n\014Modify" +
+      "Column\022\023\n\013column_name\030\001 \001(\t\0224\n\013modify_ty" +
+      "pe\030\002 \001(\0132\035.greptime.v1.ModifyColumnTypeH" +
+      "\000\0224\n\013modify_name\030\003 \001(\0132\035.greptime.v1.Mod" +
+      "ifyColumnNameH\000B\006\n\004body\"\032\n\nDropColumn\022\014\n" +
+      "\004name\030\001 \001(\t\"!\n\014FlushRequest\022\021\n\tregion_id" +
+      "\030\001 \001(\004\"#\n\016CompactRequest\022\021\n\tregion_id\030\001 " +
+      "\001(\004\"$\n\017TruncateRequest\022\021\n\tregion_id\030\001 \001(" +
+      "\004\"P\n\017RegionColumnDef\022*\n\ncolumn_def\030\001 \001(\013" +
+      "2\026.greptime.v1.ColumnDef\022\021\n\tcolumn_id\030\002 " +
+      "\001(\r2Y\n\006Region\022O\n\006Handle\022!.greptime.v1.re" +
+      "gion.RegionRequest\032\".greptime.v1.region." +
+      "RegionResponseB]\n\025io.greptime.v1.regionB" +
+      "\006ServerZ<github.com/GreptimeTeam/greptim" +
+      "e-proto/go/greptime/v1/regionb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -24595,7 +24924,7 @@ java.lang.String defaultValue);
     internal_static_greptime_v1_region_ModifyColumn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_greptime_v1_region_ModifyColumn_descriptor,
-        new java.lang.String[] { "ColumnName", "Body", });
+        new java.lang.String[] { "ColumnName", "ModifyType", "ModifyName", "Body", });
     internal_static_greptime_v1_region_DropColumn_descriptor =
       getDescriptor().getMessageTypes().get(21);
     internal_static_greptime_v1_region_DropColumn_fieldAccessorTable = new

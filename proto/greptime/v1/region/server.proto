@@ -144,7 +144,10 @@ message AddColumn {
 
 message ModifyColumn {
     string column_name = 1;
-    ModifyColumnBody body = 2;
+    oneof body {
+        ModifyColumnType modify_type = 2;
+        ModifyColumnName modify_name = 3;
+    }
 }
 
 message DropColumn { string name = 1; }
